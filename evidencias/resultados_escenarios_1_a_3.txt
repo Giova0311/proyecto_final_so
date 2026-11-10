@@ -1,0 +1,15 @@
+
+========== COMPARACIÓN GENERAL ==========
+
+Escenario 1
+First Fit: asignados=1, rechazados=0, utilización=43.95%, fragmentación=51.22%
+Best Fit:  asignados=1, rechazados=0, utilización=43.95%, fragmentación=47.74%
+-----------------------------------------------------------------
+Escenario 2
+First Fit: asignados=2, rechazados=1, utilización=61.43%, fragmentación=53.16%
+Best Fit:  asignados=3, rechazados=0, utilización=79.98%, fragmentación=46.34%
+-----------------------------------------------------------------
+Escenario 3
+First Fit: asignados=0, rechazados=1, utilización=56.05%, fragmentación=55.56%
+Best Fit:  asignados=0, rechazados=1, utilización=56.05%, fragmentación=55.56%
+-----------------------------------------------------------------

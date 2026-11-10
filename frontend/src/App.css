@@ -1,0 +1,496 @@
+/* =========================================
+   1. CONFIGURACIÓN GENERAL
+========================================= */
+
+:root {
+  --fondo: #07111f;
+  --fondo-secundario: #0b1729;
+  --panel: #101f35;
+  --panel-hover: #142641;
+  --borde: rgba(91, 145, 210, 0.16);
+
+  --azul: #168cff;
+  --azul-electrico: #00a6ff;
+  --azul-claro: #59c3ff;
+
+  --texto: #eaf3ff;
+  --texto-secundario: #91a7c2;
+
+  --verde: #20d6a0;
+  --rojo: #ff5c75;
+
+  --radio: 14px;
+  --sombra: 0 12px 35px rgba(0, 0, 0, 0.22);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+  background:
+    radial-gradient(
+      ellipse at 15% 0%,
+      rgba(0, 132, 255, 0.12),
+      transparent 35%
+    ),
+    radial-gradient(
+      ellipse at 90% 15%,
+      rgba(0, 94, 255, 0.08),
+      transparent 30%
+    ),
+    var(--fondo);
+  color: var(--texto);
+}
+
+.aplicacion {
+  min-height: 100vh;
+}
+
+/* =========================================
+   2. ENCABEZADO
+========================================= */
+
+.encabezado {
+  background: rgba(11, 23, 41, 0.92);
+  border-bottom: 1px solid var(--borde);
+  padding: 26px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  backdrop-filter: blur(12px);
+}
+
+.encabezado h1 {
+  margin: 0 0 8px;
+  font-size: 27px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  background: linear-gradient(90deg, #ffffff, var(--azul-claro));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.encabezado p {
+  margin: 0;
+  color: var(--texto-secundario);
+  font-size: 14px;
+}
+
+.btn-reiniciar {
+  background: rgba(255, 92, 117, 0.12);
+  color: #ff8295;
+  border: 1px solid rgba(255, 92, 117, 0.3);
+  padding: 12px 18px;
+  border-radius: 9px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.25s ease;
+}
+
+.btn-reiniciar:hover {
+  background: rgba(255, 92, 117, 0.22);
+  transform: translateY(-2px);
+}
+
+.btn-reiniciar:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* =========================================
+   3. CONTENIDO Y SECCIONES
+========================================= */
+
+.contenido {
+  width: 90%;
+  max-width: 1350px;
+  margin: 32px auto;
+}
+
+.seccion-memoria,
+.seccion-estadisticas,
+.formulario-container,
+.tabla-container,
+.seccion {
+  background: linear-gradient(145deg, #11233b, #0d1b30);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  padding: 24px;
+  margin-bottom: 22px;
+  box-shadow: var(--sombra);
+}
+
+.seccion-memoria h2,
+.formulario-container h2,
+.tabla-container h2,
+.estadisticas-container h2,
+.seccion h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: var(--texto);
+  font-size: 19px;
+  font-weight: 650;
+}
+
+.seccion-inferior {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 22px;
+}
+
+/* =========================================
+   4. ALERTAS Y CARGA
+========================================= */
+
+.alerta {
+  width: 90%;
+  max-width: 1350px;
+  margin: 20px auto 0;
+  padding: 14px 18px;
+  border-radius: 9px;
+  font-size: 14px;
+}
+
+.alerta-error {
+  background: rgba(255, 92, 117, 0.12);
+  color: #ff91a1;
+  border: 1px solid rgba(255, 92, 117, 0.3);
+}
+
+.alerta-exito {
+  background: rgba(32, 214, 160, 0.1);
+  color: #5ce6bd;
+  border: 1px solid rgba(32, 214, 160, 0.25);
+}
+
+.estado-carga {
+  text-align: center;
+  padding: 50px;
+  color: var(--texto-secundario);
+}
+
+/* =========================================
+   5. VISUALIZACIÓN DE MEMORIA
+========================================= */
+
+.barra-memoria-container {
+  width: 100%;
+  margin: 22px 0;
+}
+
+.barra-memoria {
+  display: flex;
+  width: 100%;
+  min-height: 85px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #1c304a;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.bloque-memoria {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  border-right: 2px solid rgba(7, 17, 31, 0.6);
+  overflow: hidden;
+  transition: width 0.3s ease;
+}
+
+.bloque-memoria span {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.bloque-memoria small {
+  font-size: 11px;
+  margin-top: 5px;
+  opacity: 0.9;
+}
+
+.barra-leyenda {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+  color: var(--texto-secundario);
+  font-size: 13px;
+}
+
+/* =========================================
+   6. FORMULARIOS Y BOTONES
+========================================= */
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 17px;
+}
+
+.campo label {
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #c6d8ee;
+  font-size: 14px;
+}
+
+.campo input,
+.campo select {
+  width: 100%;
+  padding: 12px 13px;
+  background: #09172a;
+  color: var(--texto);
+  border: 1px solid #29415f;
+  border-radius: 9px;
+  font-size: 14px;
+  outline: none;
+  transition:
+    border 0.2s,
+    box-shadow 0.2s;
+}
+
+.campo input:focus,
+.campo select:focus {
+  border-color: var(--azul-electrico);
+  box-shadow: 0 0 0 3px rgba(0, 166, 255, 0.12);
+}
+
+.campo select option {
+  background: #0d1b30;
+  color: var(--texto);
+}
+
+.formulario-container button,
+.boton-comparar {
+  background: linear-gradient(110deg, #0878ed, #00a6ff);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 9px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.formulario-container button {
+  width: 100%;
+}
+
+.boton-comparar {
+  margin: 15px 0;
+}
+
+.formulario-container button:hover,
+.boton-comparar:hover {
+  box-shadow: 0 0 20px rgba(0, 145, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.formulario-container button:disabled,
+.boton-comparar:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* =========================================
+   7. TABLA DE PROCESOS Y COMPARACIÓN
+========================================= */
+
+.tabla-scroll,
+.resultado-escenario {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.tabla-container table,
+.tabla-comparacion {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.tabla-container th,
+.tabla-container td,
+.tabla-comparacion th,
+.tabla-comparacion td {
+  padding: 14px;
+  border-bottom: 1px solid var(--borde);
+  white-space: nowrap;
+}
+
+.tabla-container th,
+.tabla-comparacion th {
+  background: rgba(22, 140, 255, 0.09);
+  color: var(--azul-claro);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.tabla-container td,
+.tabla-comparacion td {
+  color: #c6d8ee;
+  font-size: 14px;
+}
+
+.tabla-container tbody tr:hover,
+.tabla-comparacion tbody tr:hover {
+  background: rgba(22, 140, 255, 0.06);
+}
+
+.tabla-comparacion {
+  margin-top: 12px;
+}
+
+.tabla-comparacion th,
+.tabla-comparacion td {
+  text-align: center;
+}
+
+.tabla-comparacion td:first-child {
+  text-align: left;
+  font-weight: 600;
+  color: var(--texto);
+}
+
+.resultado-escenario {
+  margin-top: 28px;
+}
+
+.resultado-escenario h3 {
+  margin-bottom: 12px;
+  color: var(--azul-claro);
+  font-size: 16px;
+}
+
+.btn-liberar {
+  background: rgba(255, 92, 117, 0.12);
+  color: #ff8295;
+  border: 1px solid rgba(255, 92, 117, 0.25);
+  padding: 8px 13px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.btn-liberar:hover {
+  background: rgba(255, 92, 117, 0.24);
+}
+
+.btn-liberar:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.mensaje-vacio {
+  color: var(--texto-secundario);
+  padding: 15px 0;
+}
+
+/* =========================================
+   8. ESTADÍSTICAS
+========================================= */
+
+.estadisticas-container {
+  background: transparent;
+}
+
+.estadisticas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+}
+
+.estadistica-card {
+  background: linear-gradient(145deg, #152c49, #10223a);
+  border: 1px solid var(--borde);
+  padding: 19px;
+  border-radius: 11px;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  transition: 0.25s ease;
+}
+
+.estadistica-card:hover {
+  border-color: rgba(0, 166, 255, 0.4);
+  transform: translateY(-3px);
+}
+
+.estadistica-card span {
+  font-size: 13px;
+  color: var(--texto-secundario);
+}
+
+.estadistica-card strong {
+  font-size: 22px;
+  color: var(--azul-claro);
+}
+
+/* =========================================
+   9. PIE DE PÁGINA
+========================================= */
+
+.pie-pagina {
+  text-align: center;
+  padding: 26px;
+  color: var(--texto-secundario);
+  font-size: 13px;
+  border-top: 1px solid var(--borde);
+}
+
+/* =========================================
+   10. RESPONSIVE
+========================================= */
+
+@media (max-width: 850px) {
+  .seccion-inferior {
+    grid-template-columns: 1fr;
+  }
+
+  .encabezado {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 500px) {
+  .encabezado h1 {
+    font-size: 22px;
+  }
+
+  .contenido {
+    width: 94%;
+    margin: 20px auto;
+  }
+
+  .seccion-memoria,
+  .seccion-estadisticas,
+  .formulario-container,
+  .tabla-container,
+  .seccion {
+    padding: 17px;
+  }
+
+  .bloque-memoria span {
+    font-size: 11px;
+  }
+
+  .bloque-memoria small {
+    font-size: 9px;
+  }
+
+  .estadisticas-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
